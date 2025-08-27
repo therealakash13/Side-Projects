@@ -1,0 +1,129 @@
+:root {
+  /* Neutrals */
+  --Neutral_900: hsl(227, 75%, 14%);
+  --Neutral_800: hsl(226, 25%, 17%);
+  --Neutral_700: hsl(225, 23%, 24%);
+  --Neutral_600: hsl(226, 11%, 37%);
+  --Neutral_300: hsl(0, 0%, 78%);
+  --Neutral_200: hsl(217, 61%, 90%);
+  --Neutral_100: hsl(0, 0%, 93%);
+  --Neutral_0: hsl(200, 60%, 99%);
+
+  /* Reds */
+  --Red_400: hsl(3, 86%, 64%);
+  --Red_500: hsl(3, 71%, 56%);
+  --Red_700: hsl(3, 77%, 44%);
+
+  /* Gradients */
+  --Light_Gradient: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --Dark_Gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+}
+
+body {
+  font-size: 16px;
+  font-family: "Noto Sans", sans-serif;
+  max-width: 80%;
+  margin: 30px auto;
+  background-image: var(--Light_Gradient);
+  min-height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: var(--Neutral_0);
+}
+
+#theme_btn {
+  background-color: var(--Neutral_100);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+div#btns button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  border: 0;
+  cursor: pointer;
+  background-color: var(--Neutral_0);
+}
+
+div#btns button:hover {
+  border: 1px solid var(--Red_500);
+}
+
+div#btns button.active {
+  background-color: var(--Red_500);
+  color: var(--Neutral_100);
+}
+
+#cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--Neutral_0);
+  padding: 10px;
+  border-radius: 20px;
+  flex-basis: 31%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+
+div.card > div > img {
+  float: left;
+  padding: 10px;
+}
+
+div.card > div > * {
+  padding: 10px 0 0 0;
+  margin: 0;
+}
+
+div.card > div > div {
+  display: flex;
+  flex-direction: column;
+}
+
+div.card > button {
+  margin: 40px 0 10px 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid var(--Neutral_200);
+  background-color: var(--Neutral_0);
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--Neutral_600);
+}
+
+@media (max-width: 680px) {
+  #title {
+    flex-direction: column;
+  }
+
+  #cards {
+    flex-direction: column;
+  }
+}

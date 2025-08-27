@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Browser Extensions Manager UI</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <img src="./assets/images/logo.svg" alt="logo" />
+      <img
+        id="theme_btn"
+        src="./assets/images/icon-moon.svg"
+        alt="theme light"
+      />
+    </nav>
+
+    <div id="title">
+      <h1>Extensions List</h1>
+      <div id="btns">
+        <button class="active">All</button>
+        <button>Active</button>
+        <button>Inactive</button>
+      </div>
+    </div>
+
+    <!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
+
+    <div id="cards">
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-devlens.svg" alt="DevLens" />
+          <h3>DevLens</h3>
+          <p>Quickly inspect page layouts and visualize element boundaries.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-style-spy.svg" alt="StyleSpy" />
+          <h3>StyleSpy</h3>
+          <p>Instantly analyze and copy CSS from any webpage element.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-speed-boost.svg" alt="SpeedBoost" />
+          <h3>SpeedBoost</h3>
+          <p>Optimizes browser resource usage to accelerate page loading.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-json-wizard.svg" alt="JSONWizard" />
+          <h3>JSONWizard</h3>
+          <p>Formats, validates, and prettifies JSON responses in-browser.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-tab-master-pro.svg" alt="TabMaster" />
+          <h3>TabMaster Pro</h3>
+          <p>Organizes browser tabs into groups and sessions.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img
+            src="./assets/images/logo-viewport-buddy.svg"
+            alt="ViewportBuddy"
+          />
+          <h3>ViewportBuddy</h3>
+          <p>
+            Simulates various screen resolutions directly within the browser.
+          </p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-markup-notes.svg" alt="Markup Notes" />
+          <h3>Markup Notes</h3>
+          <p>
+            Enables annotation and notes directly onto webpages for
+            collaborative debugging.
+          </p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-grid-guides.svg" alt="GridGuides" />
+          <h3>GridGuides</h3>
+          <p>Overlay customizable grids and alignment guides on any webpage.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img
+            src="./assets/images/logo-palette-picker.svg"
+            alt="Palette Picker"
+          />
+          <h3>Palette Picker</h3>
+          <p>Instantly extracts color palettes from any webpage.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-link-checker.svg" alt="LinkChecker" />
+          <h3>LinkChecker</h3>
+          <p>Scans and highlights broken links on any page.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-dom-snapshot.svg" alt="DOM Snapshot" />
+          <h3>DOM Snapshot</h3>
+          <p>Capture and expor DOM structures quicklyt.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="./assets/images/logo-console-plus.svg" alt="ConsolePlus" />
+          <h3>ConsolePlus</h3>
+          <p>Enhanced developer console with advanced filtering and logging.</p>
+        </div>
+        <button>Remove</button>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </body>
+</html>
