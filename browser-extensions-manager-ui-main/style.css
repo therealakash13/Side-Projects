@@ -70,39 +70,43 @@ div#btns button.active {
 }
 
 #cards {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: space-evenly;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .card {
   background-color: var(--Neutral_0);
-  padding: 10px;
+  /* padding: 1rem; */
   border-radius: 20px;
-  flex-grow: 1;
-  max-width: 400px;
-} 
+}
 
 div.card > div > * {
-  padding:1rem;
+  padding: 1rem;
   margin: 0;
 }
 
-div.card > div  {
-  display: flex;
+div.card > div {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 0;
+  width: 100%;
 }
 
-div.card > div > div{
+div.card > div > img {
+  width: 100px;
+}
+
+div.card > div > div {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   padding: 0;
+  margin: 0;
 }
 
 div.card > button {
-  margin: 30px 0 0 0;
+  margin: 10px 10px;
   padding: 10px 15px;
   font-size: 14px;
   border-radius: 20px;
@@ -118,12 +122,25 @@ p {
   color: var(--Neutral_600);
 }
 
-@media (max-width: 680px) {
+@media (max-width: 850px) {
   #title {
     flex-direction: column;
   }
-
   #cards {
+    display: flex;
     flex-direction: column;
+    width: 100%;
+  }
+  div.card > div {
+    display: flex;
+    gap: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1362px) {
+  #cards {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, 1fr);
   }
 }
