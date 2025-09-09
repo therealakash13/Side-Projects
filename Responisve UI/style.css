@@ -1,0 +1,61 @@
+/* 1. Use a fluid type scale and spacing */
+:root{
+  --space: clamp(0.75rem, 1.5vw, 1.25rem);
+  --maxw: 72rem; /* 1152px */
+}
+
+html { box-sizing: border-box; }
+*,*:before,*:after { box-sizing: inherit; }
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+  font-size: clamp(16px, 1.5vw, 18px);
+  padding: var(--space);
+}
+
+/* 2. A centered responsive wrapper */
+.container{
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--space);
+}
+
+/* 3. Make media scale */
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* 4. Mobile-first stack */
+.grid{
+  display: grid;
+  gap: var(--space);
+  grid-template-columns: 1fr; /* phones: one column */
+}
+
+/* 5. Use min() to avoid overflow on big screens */
+.card{
+  padding: var(--space);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  width: min(100%, 32rem);
+}
+
+/* Small tablets and up */
+@media (min-width: 640px){
+  .grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Laptops and up */
+@media (min-width: 1024px){
+  .grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Wrap items and add gaps */
+.flex { display: flex; flex-wrap: wrap; gap: var(--space); }
+
+/* Switch from column on mobile to row on wider screens */
+.stack { display: flex; flex-direction: column; gap: var(--space); }
+@media (min-width: 768px){
+  .stack{ flex-direction: row; align-items: flex-start; }
+}
