@@ -187,6 +187,7 @@ a:hover {
     padding-top: var(--space-xl);
     margin: var(--space-sm);
     border-radius: var(--radius-sm);
+    z-index: 1000;
   }
 
   .nav-links.show {
@@ -216,6 +217,7 @@ a:hover {
   gap: var(--space-lg);
   padding: var(--space-xl) var(--space-md);
   border-radius: var(--radius-sm);
+  max-width: 1000px
 }
 
 /* LEFT SIDE */
@@ -382,7 +384,7 @@ a:hover {
   border-radius: var(--radius-sm, 8px);
   box-shadow: var(--shadow-sm);
   padding: var(--space-lg);
-  max-width: 900px;
+  max-width: 1000px;
   width: 100%;
 }
 
