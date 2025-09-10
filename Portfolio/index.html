@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="./assets/images/me.png" alt="Logo" />
+          <span>Akash</span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+          <li class="close-btn" id="close-btn">
+            <img src="./assets/images/close.svg" alt="Close Menu" />
+          </li>
+          <li><a href="#">Resume</a></li>
+          <li><a href="#">My Work</a></li>
+          <li><a href="#">About Me</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <button class="menu-btn" id="menu-btn">
+          <img src="./assets/images/menu.svg" alt="Menu" />
+        </button>
+      </nav>
+    </header>
+
+    <section class="container" id="hero">
+      <div class="hero-left">
+        <button class="status-btn">
+          <svg
+            width="24px"
+            height="24px"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+          >
+            <path fill="#5ce1e6" d="M8 3a5 5 0 100 10A5 5 0 008 3z"></path>
+          </svg>
+          <span>Available to Work</span>
+        </button>
+
+        <h1>
+          Hi, I am a<br />
+          Fullstack<br />
+          Web Developer
+        </h1>
+
+        <button class="btn-primary">Contact Me</button>
+      </div>
+
+      <div class="hero-right">
+        <img
+          src="./assets/images/mehero.png"
+          alt="My Picture"
+          class="hero-img"
+        />
+
+        <div class="social-icons">
+          <a href="#"><img src="./assets/images/github.png" alt="GitHub" /></a>
+          <a href="#"><img src="./assets/images/gmail.png" alt="Gmail" /></a>
+          <a href="#"
+            ><img src="./assets/images/linkedin.png" alt="LinkedIn"
+          /></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container resume" id="resume">
+      <h2>My Resume</h2>
+      <p class="resume-heading">
+        My motto is to code and build innovative web applications and
+        easy-to-use software. I am eager to apply academic knowledge,
+        self-taught skills, and hands-on project experience in a collaborative
+        environment.
+      </p>
+
+      <div class="resume-container">
+        <!-- Tabs -->
+        <nav class="resume-tabs">
+          <ul>
+            <li class="tab active" data-tab="skills">Skills</li>
+            <li class="tab" data-tab="education">Education</li>
+            <li class="tab" data-tab="work">Work Experience</li>
+            <li class="tab" data-tab="certifications">Certifications</li>
+          </ul>
+        </nav>
+
+        <!-- Content -->
+        <div class="resume-content">
+          <!-- Skills -->
+          <div class="tab-content active" id="skills">
+            <ul>
+              <li>
+                <span>Languages</span>HTML, CSS, JavaScript, TypeScript, C, C++,
+                EJS
+              </li>
+              <li>
+                <span>Frameworks / Libraries</span>React, Redux, Angular,
+                PrimeNG, Bootstrap, Tailwind
+              </li>
+              <li>
+                <span>Backend</span>Node, Express, Prisma, PostgreSQL, MongoDB,
+                Firebase
+              </li>
+              <li>
+                <span>Packages</span>pg, jwt, bcrypt, multer, axios, toastify,
+                etc.
+              </li>
+              <li><span>Tools</span>Git, Git Bash, npm, Postman, pgAdmin</li>
+            </ul>
+          </div>
+
+          <!-- Education -->
+          <div class="tab-content" id="education">
+            <ul>
+              <li><span>X</span>Greenfields Public School</li>
+              <li><span>XII</span>Greenfields Public School</li>
+              <li>
+                <span>Graduation</span>Maharishi Dayanand University, Rohtak
+              </li>
+            </ul>
+          </div>
+
+          <!-- Work -->
+          <div class="tab-content" id="work">
+            <h3>Arc Apparels <span>Operations Assistant</span></h3>
+            <p>Delhi | 16th July 2025 - Present</p>
+            <ul>
+              <li>
+                Handled product labeling and order processing for Amazon,
+                Flipkart, and Shopify.
+              </li>
+              <li>
+                Maintained accuracy in operations ensuring timely fulfillment.
+              </li>
+              <li>
+                Gained insight into Shopify workflows, complementing web dev
+                experience.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Certifications -->
+          <div class="tab-content" id="certifications">
+            <ul>
+              <li>
+                <span>Network Bulls</span>
+                One-day workshop: configured Cisco routers using Packet Tracer
+                and GNS.
+              </li>
+              <li>
+                <span>Online Courses</span>
+                The Complete Full-Stack Web Dev Bootcamp – Angela Yu (Udemy)
+              </li>
+              <li>
+                <span>YouTube</span>
+                Learned from multiple playlists and free resources.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container work" id="work">
+      <h2 class="section-title">My Work</h2>
+      <div class="work-grid">
+        <!-- Project Card -->
+        <div class="work-card">
+          <img src="./assets/images/niggaflix.png" alt="Niggaflix Project" />
+          <div class="work-overlay">
+            <h3>Niggaflix</h3>
+            <p>
+              A movie streaming platform clone featuring dynamic UI, custom
+              components, and responsive layouts for a smooth user experience.
+            </p>
+            <p class="status-btn">
+              Technologies Used:<span>React, Tailwind CSS</span>
+            </p>
+            <a href="#" class="btn-primary">Live Link</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <img src="./assets/images/jobhub.png" alt="Jobhub Project" />
+          <div class="work-overlay">
+            <h3>Jobhub</h3>
+            <p>
+              A job listing platform where users can search, filter, and apply
+              for jobs with a sleek design and API integration.
+            </p>
+            <p class="status-btn">
+              Technologies Used:<span>Angular, PrimeNG</span>
+            </p>
+            <a href="#" class="btn-primary">Live Link</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <img src="./assets/images/foodi.png" alt="Foodi Project" />
+          <div class="work-overlay">
+            <h3>Foodi</h3>
+            <p>
+              A restaurant website UI concept featuring menu pages, animations,
+              and modern visuals.
+            </p>
+            <p class="status-btn">
+              Technologies Used:<span>React, Redux</span>
+            </p>
+            <a href="#" class="btn-primary">Live Link</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <img src="./assets/images/spotify.png" alt="Spotify Clone Project" />
+          <div class="work-overlay">
+            <h3>Spotify Clone</h3>
+            <p>
+              Spotify web player clone featuring custom audio controls and music
+              player functionalities.
+            </p>
+            <p class="status-btn">
+              Technologies Used:<span>HTML, CSS, JS</span>
+            </p>
+            <a href="#" class="btn-primary">Live Link</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <img src="./assets/images/weather.png" alt="Weather App Project" />
+          <div class="work-overlay">
+            <h3>Weather App</h3>
+            <p>
+              A real-time weather forecast app with location-based data fetching
+              and minimal UI.
+            </p>
+            <p class="status-btn">
+              Technologies Used:<span>JavaScript, API</span>
+            </p>
+            <a href="#" class="btn-primary">Live Link</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <img src="./assets/images/ytclone.png" alt="YouTube Clone Project" />
+          <div class="work-overlay">
+            <h3>YouTube Clone</h3>
+            <p>
+              YouTube video browsing UI clone featuring a responsive design and
+              channel view pages.
+            </p>
+            <p class="status-btn">Technologies Used:<span>React</span></p>
+            <a href="#" class="btn-primary">Live Link</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container about" id="about-me">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-container">
+        <!-- Profile Image -->
+        <div class="about-img">
+          <img src="./assets/images/mehero.png" alt="Akash's Picture" />
+        </div>
+
+        <!-- Info -->
+        <div class="about-info">
+          <p class="about-text">
+            I’m a passionate <strong>Fullstack Web Developer</strong> who loves
+            building user-friendly and innovative applications. I enjoy solving
+            real-world problems with clean and efficient code, and I’m always
+            exploring new technologies to grow my skillset.
+          </p>
+
+          <div class="about-details">
+            <ul>
+              <li><strong>Email:</strong> therealakash13@gmail.com</li>
+              <li><strong>Phone:</strong> +91 9971104373</li>
+              <li><strong>Location:</strong> Delhi, India</li>
+              <li><strong>Hobbies:</strong> Code, Chai, Anime, Music</li>
+            </ul>
+          </div>
+
+          <div class="social-icons">
+            <a href="#"
+              ><img src="./assets/images/github.png" alt="GitHub"
+            /></a>
+            <a href="#"><img src="./assets/images/gmail.png" alt="Gmail" /></a>
+            <a href="#"
+              ><img src="./assets/images/linkedin.png" alt="LinkedIn"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container contact" id="contact-me">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="contact-container">
+        <!-- Map or Image -->
+        <div class="contact-img">
+          <img src="./assets/images/map.png" alt="Map Location" />
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-btn");
+      const navLinks = document.getElementById("nav-links");
+
+      const tabs = document.querySelectorAll(".resume-tabs .tab");
+      const contents = document.querySelectorAll(".tab-content");
+
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.add("show");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      });
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          contents.forEach((c) => c.classList.remove("active"));
+
+          tab.classList.add("active");
+          document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
