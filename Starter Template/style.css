@@ -48,6 +48,24 @@
 
   /* Widths */
   --translateY-width: 5px;
+
+  /* Pixel to Rem */
+  /*    8px	    0.5rem
+        10px	0.6rem
+        12px	0.8rem
+        14px	0.9rem
+        15px	0.9rem
+        16px	1rem
+        18px	1.1rem
+        20px	1.3rem
+        24px	1.5rem
+        25px	1.6rem
+        28px	1.8rem
+        32px	2rem
+        36px	2rem
+        40px	3rem
+        44px	3rem
+        48px	3rem    */
 }
 
 * {
