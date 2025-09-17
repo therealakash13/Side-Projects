@@ -145,7 +145,7 @@ a:hover {
     color: var(--color-text);
 }
 
-.container ul{
+/* .container ul{
     list-style: none;
 }
 
@@ -157,10 +157,94 @@ a:hover {
     padding: var(--space-xl);
     border-radius: var(--radius-sm);
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 }
+
 .container li:hover {
     color: var(--color-accent);
     background-color: var(--color-secondary);
     transition: all 50ms ease-in;
-    scale: 105% ;
+    scale: 1.1 ;
+}
+
+.container i:hover{
+  color: var(--color-accent);
+}
+
+.container li:active{
+  min-height: 60vh;
+  background-color: var(--color-primary);
+}  */
+
+.accordion {
+  list-style: none;
+}
+
+.accordion .tab {
+  margin-bottom: var(--space-sm);
+  overflow: hidden;
+  background: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+}
+
+.accordion .tab:hover {
+  background-color: var(--color-secondary);
+  scale: 1.1;
+  transition: all 200ms ease;
+}
+
+.accordion-header {
+  padding: var(--space-xl);
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text);
+}
+
+.accordion-header i {
+  transition: transform 0.3s ease;
+}
+
+.accordion-header:hover{
+  color: var(--color-accent);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 var(--space-sm);
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.accordion-content.open {
+  padding: var(--space-md);
+  max-height: 50vh; 
+  border: 1px solid  var(--color-secondary);
+}
+
+.accordion .active{
+  scale: 1.1;
+}
+
+.accordion .active .accordion-header{
+  background-color: var(--color-secondary);
+  color: var(--color-accent);
+}
+
+.accordion .active .accordion-header i {
+  transform: rotate(180deg);
 }

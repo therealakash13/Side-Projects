@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Starter Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,16 +19,78 @@
   </head>
   <body>
     <div class="container">
-        <h1>Micro Projects...</h1>
-        <p>These are some side projects I did while doing the course.</p>
-        <ul>
-            <li>Remaining time Calculator</li>
-            <li>BMI Calculator</li>
-            <li>Love Calculator</li>
-            <li>Leap Year Checker</li>
-            <li>FizzBuzz Simulator</li>
-            <li>Fabonnacci Series</li>
-        </ul>
+      <h1>Micro Projects...</h1>
+      <p>These are some side projects I did while doing the course.</p>
+
+      <ul class="accordion">
+        <li class="tab">
+          <button class="accordion-header">
+            Remaining Time Calculator <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <input type="date" id="targetDate" />
+            <button onclick="calcRemaining()">Calculate</button>
+            <p id="result"></p>
+          </div>
+        </li>
+
+        <li class="tab">
+          <button class="accordion-header">
+            BMI Calculator <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <input type="number" id="height" placeholder="Height (cm)" />
+            <input type="number" id="weight" placeholder="Weight (kg)" />
+            <button onclick="calcBMI()">Calculate</button>
+            <p id="bmiResult"></p>
+          </div>
+        </li>
+
+        <li class="tab">
+          <button class="accordion-header">
+            Love Calculator <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>Just for fun ❤️</p>
+          </div>
+        </li>
+
+        <li class="tab">
+          <button class="accordion-header">
+            Leap Year Checker <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <input type="number" id="year" placeholder="Enter year" />
+            <button onclick="checkLeap()">Check</button>
+            <p id="leapResult"></p>
+          </div>
+        </li>
+
+        <li class="tab">
+          <button class="accordion-header">
+            FizzBuzz Simulator <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <input type="number" id="fizzbuzzNum" placeholder="Enter number" />
+            <button onclick="runFizzBuzz()">Run</button>
+            <p id="fizzbuzzResult"></p>
+          </div>
+        </li>
+
+        <li class="tab">
+          <button class="accordion-header">
+            Fibonacci Series <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <input type="number" id="fibNum" placeholder="Enter limit" />
+            <button onclick="genFibonacci()">Generate</button>
+            <p id="fibResult"></p>
+          </div>
+        </li>
+      </ul>
+
+      <script src="./script.js"></script>
+    
     </div>
   </body>
 </html>
