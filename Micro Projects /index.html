@@ -28,8 +28,8 @@
             Remaining Time Calculator <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="accordion-content">
-            <input type="date" id="targetDate" />
-            <button onclick="calcRemaining()">Calculate</button>
+            <input id="age" type="number" placeholder="Enter your Age..." />
+            <button onclick="remainingTimeCalculator()">Calculate</button>
             <p id="result"></p>
           </div>
         </li>
@@ -39,9 +39,9 @@
             BMI Calculator <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="accordion-content">
-            <input type="number" id="height" placeholder="Height (cm)" />
+            <input type="number" id="height" placeholder="Height (m)" />
             <input type="number" id="weight" placeholder="Weight (kg)" />
-            <button onclick="calcBMI()">Calculate</button>
+            <button onclick="bmiCalculator()">Calculate</button>
             <p id="bmiResult"></p>
           </div>
         </li>
@@ -51,7 +51,10 @@
             Love Calculator <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="accordion-content">
-            <p>Just for fun ❤️</p>
+            <input type="text" placeholder="Enter your name...">
+            <input type="text" placeholder="Enter your crush's name...">
+            <button onclick="loveCalc()">Calculate</button>
+            <p id="loveResult"></p>
           </div>
         </li>
 
@@ -61,7 +64,7 @@
           </button>
           <div class="accordion-content">
             <input type="number" id="year" placeholder="Enter year" />
-            <button onclick="checkLeap()">Check</button>
+            <button onclick="checkLeapYear()">Check</button>
             <p id="leapResult"></p>
           </div>
         </li>

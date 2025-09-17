@@ -23,29 +23,63 @@ document.querySelectorAll(".accordion-header").forEach((header) => {
 });
 
 // Calculator functions
-function calcRemaining() {
-  const target = new Date(document.getElementById("targetDate").value);
-  const now = new Date();
-  const diff = target - now;
-  if (diff > 0) {
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById("result").innerText = `${days} days remaining`;
+function remainingTimeCalculator() {
+  var age = document.getElementById("age").value;
+  if (age > 90) {
+    document.querySelector("#result").innerHTML = "Age can't exceed 90";
+  } else if (age < 5) {
+    document.querySelector("#result").innerHTML = "Go study bro !";
+  } else if (age < 0) {
+    document.querySelector("#result").innerHTML = "Age cant be zero !";
   } else {
-    document.getElementById("result").innerText = "Date has passed!";
+    var years = 90 - age;
+    var months = years * 12;
+    var weeks = years * 52;
+    var days = years * 365;
+    document.querySelector("#result").innerHTML =
+      "You have " +
+      days +
+      " days, " +
+      weeks +
+      " weeks, and " +
+      months +
+      " months left.";
   }
 }
 
-function calcBMI() {
-  const h = document.getElementById("height").value / 100;
-  const w = document.getElementById("weight").value;
-  if (h && w) {
-    const bmi = (w / (h * h)).toFixed(2);
-    document.getElementById("bmiResult").innerText = `Your BMI is ${bmi}`;
+function bmiCalculator() {
+  var height = document.getElementById("height").value;
+  var weight = document.getElementById("weight").value;
+  var bmi = Number(weight) / Number(height) ** 2; // Can use Math.pow(height,2)
+  if (bmi < 18) {
+    document.getElementById("bmiResult").innerHTML =
+      Math.floor(bmi) + " 'Underweight ! You are cooked...' ";
+  } else if (bmi >= 18 && bmi < 25) {
+    document.getElementById("bmiResult").innerHTML =
+      Math.floor(bmi) + " 'Normal ! Nice...' ";
+  } else if (bmi >= 25 && bmi < 30) {
+    document.getElementById("bmiResult").innerHTML =
+      Math.floor(bmi) + " 'Overweight ! You cant let it slide...' ";
+  } else if (bmi >= 30 && bmi < 35) {
+    document.getElementById("bmiResult").innerHTML =
+      Math.floor(bmi) + " 'Obese ! Do something about it bro...' ";
+  } else if (bmi >= 35) {
+    document.getElementById("bmiResult").innerHTML =
+      Math.floor(bmi) + " 'Extremely Obese ! Max difficulty...' ";
+  } else {
+    document.getElementById("bmiResult").innerHTML = " 'Cant calculate !' ";
   }
 }
 
-function checkLeap() {
-  const year = document.getElementById("year").value;
+function loveCalc() {
+  n = 100;
+  var num = Math.random();
+  document.getElementById("loveResult").innerHTML =
+    "Love Score: " + Math.floor(num * n + 1) + " %";
+}
+
+function checkLeapYear() {
+  var year = document.getElementById("year").value;
   if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
     document.getElementById("leapResult").innerText = `${year} is a Leap Year!`;
   } else {
@@ -59,10 +93,10 @@ function runFizzBuzz() {
   const num = document.getElementById("fizzbuzzNum").value;
   let output = "";
   for (let i = 1; i <= num; i++) {
-    if (i % 3 === 0 && i % 5 === 0) output += "FizzBuzz ";
-    else if (i % 3 === 0) output += "Fizz ";
-    else if (i % 5 === 0) output += "Buzz ";
-    else output += i + " ";
+    if (i % 3 === 0 && i % 5 === 0) output += "FizzBuzz, ";
+    else if (i % 3 === 0) output += "Fizz, ";
+    else if (i % 5 === 0) output += "Buzz, ";
+    else output += i + ", ";
   }
   document.getElementById("fizzbuzzResult").innerText = output;
 }
