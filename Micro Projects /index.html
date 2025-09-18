@@ -51,8 +51,8 @@
             Love Calculator <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="accordion-content">
-            <input type="text" placeholder="Enter your name...">
-            <input type="text" placeholder="Enter your crush's name...">
+            <input type="text" placeholder="Enter your name..." />
+            <input type="text" placeholder="Enter your crush's name..." />
             <button onclick="loveCalc()">Calculate</button>
             <p id="loveResult"></p>
           </div>
@@ -90,10 +90,36 @@
             <p id="fibResult"></p>
           </div>
         </li>
+
+        <li class="tab">
+          <button class="accordion-header">
+            Calculator <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <input
+              type="number"
+              id="operand1"
+              placeholder="Enter First Number"
+            />
+            <input
+              type="number"
+              id="operand2"
+              placeholder="Enter Second Number"
+            />
+            <select name="operation" id="operation">
+              <option value="none">Choose an operation</option>
+              <option value="add">Addition</option>
+              <option value="sub">Subtraction</option>
+              <option value="prod">Multiply</option>
+              <option value="div">Divide</option>
+            </select>
+            <button id="getOpRes">=</button>
+            <p id="opResult"></p>
+          </div>
+        </li>
       </ul>
 
       <script src="./script.js"></script>
-    
     </div>
   </body>
 </html>

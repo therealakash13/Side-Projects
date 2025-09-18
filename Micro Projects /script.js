@@ -22,6 +22,8 @@ document.querySelectorAll(".accordion-header").forEach((header) => {
   });
 });
 
+document.getElementById("getOpRes").addEventListener("click", operation);
+
 // Calculator functions
 function remainingTimeCalculator() {
   var age = document.getElementById("age").value;
@@ -111,4 +113,42 @@ function genFibonacci() {
     [n1, n2] = [n2, n1 + n2];
   }
   document.getElementById("fibResult").innerText = result;
+}
+
+function operation() {
+  var op1 = Number(document.getElementById("operand1").value);
+  var op2 = Number(document.getElementById("operand2").value);
+  var selectedElement = document.getElementById("operation");
+  var index = selectedElement.selectedIndex;
+  var optionc = selectedElement.options[index];
+  var res = 0;
+  if (isNaN(op1) || isNaN(op2) || optionc.value === "none") {
+    document.getElementById("opResult").innerHTML =
+      "Please enter two number and select an operation !";
+  } else {
+    switch (optionc.value) {
+      case "add":
+        res = op1 + op2;
+        break;
+      case "sub":
+        res = op1 - op2;
+        break;
+      case "prod":
+        res = op1 * op2;
+        break;
+      case "div":
+        op2 === 0
+          ? (document.getElementById("opResult").innerHTML =
+              "Cant perform this operation !")
+          : (res = op1 / op2);
+        break;
+      default:
+        document.getElementById("opResult").innerHTML =
+          "Cant perform this operation !";
+        break;
+    }
+    document.getElementById(
+      "opResult"
+    ).innerHTML = `Result is ${res}`;
+  }
 }

@@ -256,3 +256,12 @@ input[type="number"] {
   color: var(--color-primary);
   transition: all 300ms ease;
 }
+
+#operation{
+  padding: var(--space-xs) var(--space-lg);
+  outline: none;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--text-base);
+  border-radius: var(--radius-sm);
+}
