@@ -5,11 +5,13 @@ for (i = 0; i < buttons.length; i++) {
     .getElementsByClassName("drum")
     [i].addEventListener("click", function () {
       sound(this.innerHTML);
+      pressedAnimation(this.innerHTML);
     });
 }
 
 document.addEventListener("keydown", function (event) {
   sound(event.key);
+  pressedAnimation(event.key);
 });
 
 function sound(key) {
@@ -46,4 +48,14 @@ function sound(key) {
     default:
       break;
   }
+}
+
+function pressedAnimation(button) {
+  var button = document.querySelector("." + button);
+  
+  button.classList.add("pressed");
+
+  setTimeout(function () {
+    button.classList.remove("pressed");
+  }, 300);
 }
