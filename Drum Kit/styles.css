@@ -164,20 +164,6 @@ h1 {
   flex-wrap: wrap;
 }
 
-.game-over {
-  background-color: red;
-  opacity: 0.8;
-}
-
-.pressed {
-  box-shadow: 0 3px 4px 0 #dbedf3;
-  opacity: 0.5;
-}
-
-.red {
-  color: red;
-}
-
 .drum {
   outline: none;
   border-style: none;

@@ -3,13 +3,18 @@ var buttons = document.getElementsByClassName("drum");
 for (i = 0; i < buttons.length; i++) {
   document
     .getElementsByClassName("drum")
-    [i].addEventListener("click", clickHandler);
+    [i].addEventListener("click", function () {
+      sound(this.innerHTML);
+    });
 }
 
-function clickHandler() {
-  switch (this.innerHTML) {
+document.addEventListener("keydown", function (event) {
+  sound(event.key);
+});
+
+function sound(key) {
+  switch (key) {
     case "w":
-      // this.classList.add("pressed");
       var audio = new Audio("./sounds/tom-1.mp3");
       audio.play();
       break;
