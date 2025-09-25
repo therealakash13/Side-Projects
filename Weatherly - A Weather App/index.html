@@ -25,41 +25,65 @@
               placeholder="Enter the city name..."
               name="city"
             />
-            <button class="btn disabled" id="search_btn">Search</button>
+            <!-- <button class="btn disabled" id="search_btn">Search</button> -->
           </div>
           <div id="results" class="hidden">
-            <ul>
-              <li>
-                <h3>City</h3>
-                <em>State</em>
-                <p>Name</p>
-              </li>
-              <li>
-                <h3>City</h3>
-                <em>State</em>
-                <p>Name</p>
-              </li>
-              <li>
-                <h3>City</h3>
-                <em>State</em>
-                <p>Name</p>
-              </li>
-              <li>
-                <h3>City</h3>
-                <em>State</em>
-                <p>Name</p>
-              </li>
-              <li>
-                <h3>City</h3>
-                <em>State</em>
-                <p>Name</p>
-              </li>
-            </ul>
+            <ul></ul>
+            <h3 class="hidden" id="resp"></h3>
           </div>
         </div>
 
         <div id="info" class="info hidden">
-          <h2 id="city_name"></h2>
+          <div id="weather-container" class="weather-card">
+            <!-- Location -->
+            <div class="location">
+              <h2 id="city-name">City Name</h2>
+              <p id="country">Country</p>
+            </div>
+
+            <!-- Weather Overview -->
+            <div class="main">
+              <div class="weather-overview">
+                <img id="weather-icon" src="" alt="Weather Icon" />
+                <p id="weather-main">Main</p>
+                <p id="weather-desc">Description</p>
+              </div>
+
+              <!-- Temperature -->
+              <div class="temperature">
+                <p>Current: <span id="temp">--</span>°C</p>
+                <p>Feels Like: <span id="feels-like">--</span>°C</p>
+                <p>
+                  Min: <span id="temp-min">--</span>°C | Max:
+                  <span id="temp-max">--</span>°C
+                </p>
+              </div>
+            </div>
+            <!-- Additional Info -->
+            <div class="additional-info">
+              <p>Humidity: <span id="humidity">--</span>%</p>
+              <p>Pressure: <span id="pressure">--</span> hPa</p>
+              <p>Visibility: <span id="visibility">--</span> m</p>
+            </div>
+
+            <!-- Wind Info -->
+            <div class="wind-info">
+              <p>Speed: <span id="wind-speed">--</span> m/s</p>
+              <p>Direction: <span id="wind-deg">--</span>°</p>
+              <p>Gust: <span id="wind-gust">--</span> m/s</p>
+            </div>
+
+            <!-- Clouds -->
+            <div class="clouds">
+              <p>Cloudiness: <span id="clouds-all">--</span>%</p>
+            </div>
+
+            <!-- Sunrise / Sunset -->
+            <div class="sun-times">
+              <p>Sunrise: <span id="sunrise">--:--</span></p>
+              <p>Sunset: <span id="sunset">--:--</span></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
