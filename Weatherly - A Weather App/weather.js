@@ -13,15 +13,13 @@ var searchRes = {
 $(function () {
   $("#location").on("input", function () {
     if ($(this).val().trim() === "") {
-      $("#search_btn").addClass("disabled");
-      $("#search").removeClass("end");
+      $("#info").addClass("hidden");
       $("#results").addClass("hidden");
       $("#resp").addClass("hidden");
     } else if ($(this).val().trim().length > 4) {
       fetchGeoocde($(this).val());
     } else {
       $("#search_btn").removeClass("disabled");
-      $("#search").addClass("end");
     }
 
     // $("#search_btn").on("click", function () {
@@ -32,6 +30,7 @@ $(function () {
 
     $("#results").on("click", ".searchbtn", function () {
       $("#results").addClass("hidden");
+      $("#info").removeClass("hidden");
 
       var lat = $(this).data("lat");
       var lon = $(this).data("lon");
@@ -49,7 +48,6 @@ function fetchData(latitude, longitude, name) {
     throw new Error("Can't fetch data! Latitude, Longitude required.");
   }
 
-  //  https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
   var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   fetch(url)
     .then(function (res) {
@@ -69,6 +67,10 @@ function fetchData(latitude, longitude, name) {
         `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
       );
 
+      // Location
+      $("#lat").text(Math.round(data.coord.lat * 10) / 10);
+      $("#long").text(Math.round(data.coord.lon * 10) / 10);
+
       // Imperial: F
       // $("#temp").text((data.main.temp - 273.15).toFixed(1));
       // $("#feels-like").text((data.main.feels_like - 273.15).toFixed(1));
@@ -83,20 +85,22 @@ function fetchData(latitude, longitude, name) {
 
       $("#wind-gust").text(data.wind.gust); // Imp: miles/hour  metric: meter/sec
 
-      $("#humidity").text(data.main.humidity);                                  // %
-      $("#pressure").text(data.main.pressure);                                  // hPa
-      $("#visibility").text(data.visibility);                                   // m
+      $("#humidity").text(data.main.humidity); // %
+      $("#pressure").text(data.main.pressure); // hPa
+      $("#visibility").text(data.visibility); // m
 
-      $("#wind-speed").text(data.wind.speed);                                   // meter/sec
-      $("#wind-deg").text(data.wind.deg);                                       // meteorological degrees
+      $("#wind-speed").text(data.wind.speed); // meter/sec
+      $("#wind-deg").text(data.wind.deg); // meteorological degrees
 
-      $("#clouds-all").text(data.clouds.all);                                   // %
+      $("#clouds-all").text(data.clouds.all); // %
 
       // Convert timestamp to local time
       $("#sunrise").text(
         new Date(data.sys.sunrise * 1000).toLocaleTimeString()
-      );                                                                        // unix, UTC
+      ); // unix, UTC
       $("#sunset").text(new Date(data.sys.sunset * 1000).toLocaleTimeString()); // unix, UTC
+
+      $("#info").removeClass("hidden");
     })
     .catch(function (error) {
       console.log(error);
@@ -127,7 +131,7 @@ function fetchGeoocde(str) {
 
       var res = data.map((item) => ({
         name: item.name || "",
-        local_names: item.local_names || {}, // ensure it's always an object
+        local_names: item.local_names || {},
         lat: item.lat || 0,
         lon: item.lon || 0,
         country: item.country || "",
@@ -149,6 +153,7 @@ function fetchGeoocde(str) {
     })
     .catch(function (error) {
       $("#results").removeClass("hidden");
+      $("#info").addClass("hidden");
       $("#resp").removeClass("hidden");
       $("#resp").css("marginBottom", 0).text(error.message);
     });
