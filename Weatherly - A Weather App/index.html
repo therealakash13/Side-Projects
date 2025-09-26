@@ -25,6 +25,10 @@
               placeholder="Enter the city name..."
               name="city"
             />
+            <select id="unit">
+              <option value="metric" selected>Metric (°C, m/s)</option>
+              <option value="imperial">Imperial (°F, mph)</option>
+            </select>
           </div>
           <div id="results" class="hidden">
             <ul></ul>
@@ -39,7 +43,8 @@
               <h2 id="city-name">City Name</h2>
               <p id="country">Country</p>
               <p id="latlong">
-                Lat:<span id="lat">--</span> <span class="sep">|</span> Long:<span id="long">--</span>
+                Lat:<span id="lat">--</span>
+                <span class="sep">|</span> Long:<span id="long">--</span>
               </p>
             </div>
 
@@ -54,16 +59,18 @@
               <!-- Temperature -->
               <div class="temperature">
                 <p>
-                  Current: <span id="temp">--</span> °C <br />
-                  Feels: <span id="feels-like">--</span> °C <br />
-                  Min: <span id="temp-min">--</span> °C <br />
-                  Max: <span id="temp-max">--</span> °C
+                  Current: <span id="temp">--</span> <em class="deg">°C</em>
+                  <br />
+                  Feels: <span id="feels-like">--</span>
+                  <em class="deg">°C</em> <br />
+                  Min: <span id="temp-min">--</span> <em class="deg">°C</em>
+                  <br />
+                  Max: <span id="temp-max">--</span> <em class="deg">°C</em>
                 </p>
               </div>
             </div>
 
             <!-- Additional Info -->
-
             <div class="additional-info">
               <p>Humidity: <span id="humidity">--</span> %</p>
               <p>Pressure: <span id="pressure">--</span> hPa</p>
@@ -72,9 +79,9 @@
 
             <!-- Wind Info -->
             <div class="wind-info">
-              <p>Speed: <span id="wind-speed">--</span> m/s</p>
+              <p>Speed: <span id="wind-speed">--</span> <em class="speed-unit">m/s</em></p>
               <p>Direction: <span id="wind-deg">--</span>°</p>
-              <p>Gust: <span id="wind-gust">--</span> m/s</p>
+              <p>Gust: <span id="wind-gust">--</span> <em class="speed-unit">m/s</em></p>
             </div>
 
             <!-- Clouds -->

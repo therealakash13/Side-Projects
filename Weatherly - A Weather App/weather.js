@@ -3,12 +3,15 @@ const baseUrl = "https://api.openweathermap.org";
 const imgUrl = "https://openweathermap.org/img/wn";
 let lang = "hi";
 let unit = "metric";
+let lat = 0;
+let long = 0;
+let cname = "";
 
 $(function () {
   $("#location").on("input", function () {
     if ($(this).val().trim() === "") {
       $("#info, #results, #resp").addClass("hidden");
-    } else if ($(this).val().trim().length > 4) {
+    } else if ($(this).val().trim().length > 3) {
       fetchGeoocde($(this).val());
     } else {
       $("#search_btn").removeClass("disabled");
@@ -19,11 +22,11 @@ $(function () {
     $("#results").addClass("hidden");
     $("#info").removeClass("hidden");
 
-    let lat = $(this).data("lat");
-    let lon = $(this).data("lon");
-    let name = $(this).data("name");
+    lat = $(this).data("lat");
+    long = $(this).data("lon");
+    cname = $(this).data("name");
 
-    fetchData(lat, lon, name);
+    fetchData(lat, long, cname);
   });
 
   $("#results").on("mouseenter", "li", function () {
@@ -42,6 +45,23 @@ $(function () {
       }
     })
     .trigger("resize");
+
+  $("#unit").on("change", function () {
+    unit = $(this).val();
+    $("#results ul").remove();
+    $("#info").addClass("hidden");
+    fetchData(lat, long, cname);
+    if (unit === "imperial") {
+      $(".deg").text("°F");
+      $(".speed-unit").text("mph");
+    } else if (unit === "metric") {
+      $(".deg").text("°C");
+      $(".speed-unit").text("m/s");
+    }
+    $("#info").removeClass("hidden");
+
+    // Whenever the unit changes and search again there is nothing in results is hidden i guess
+  });
 });
 
 function fetchData(latitude, longitude, name) {
@@ -56,19 +76,18 @@ function fetchData(latitude, longitude, name) {
       return res.json();
     })
     .then(function (data) {
-      // console.log(data);
-
+      // Location
       $("#city-name").text(data.name);
       $("#country").text(data.sys.country);
+      $("#lat").text(Math.round(data.coord.lat * 10) / 10);
+      $("#long").text(Math.round(data.coord.lon * 10) / 10);
 
+      // Weather Overview
       $("#weather-main").text(data.weather[0].main);
       $("#weather-desc").text(data.weather[0].description);
       $("#weather-icon").attr("src", `${imgUrl}/${data.weather[0].icon}.png`);
 
-      // Location
-      $("#lat").text(Math.round(data.coord.lat * 10) / 10);
-      $("#long").text(Math.round(data.coord.lon * 10) / 10);
-
+      // Temperature
       // Imperial: F
       // $("#temp").text((data.main.temp - 273.15).toFixed(1));
       // $("#feels-like").text((data.main.feels_like - 273.15).toFixed(1));
@@ -81,17 +100,20 @@ function fetchData(latitude, longitude, name) {
       $("#temp-min").text(data.main.temp_min);
       $("#temp-max").text(data.main.temp_max);
 
-      $("#wind-gust").text(data.wind.gust); // Imp: miles/hour  metric: meter/sec
-
+      // Additional Info
       $("#humidity").text(data.main.humidity); // %
       $("#pressure").text(data.main.pressure); // hPa
       $("#visibility").text(data.visibility); // m
 
+      // Wind Info
       $("#wind-speed").text(data.wind.speed); // meter/sec
       $("#wind-deg").text(data.wind.deg); // meteorological degrees
+      $("#wind-gust").text(data.wind.gust); // Imp: miles/hour  metric: meter/sec
 
+      // Cloud
       $("#clouds-all").text(data.clouds.all); // %
 
+      // Sunrise/Sunset
       // Convert timestamp to local time
       $("#sunrise").text(
         new Date(data.sys.sunrise * 1000).toLocaleTimeString()

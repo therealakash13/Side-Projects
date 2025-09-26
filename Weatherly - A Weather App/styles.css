@@ -109,6 +109,10 @@ a:hover {
   color: var(--color-secondary);
 }
 
+em[class="deg"],em[class="speed-unit"] {
+  font-style: normal;
+}
+
 input,
 textarea {
   padding: var(--space-xs) var(--space-md);
@@ -124,6 +128,21 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: var(--color-accent);
+}
+
+select#unit {
+  background: var(--color-secondary);
+  color: var(--color-primary);  
+  border-radius: var(--radius-sm);
+  padding: var(--space-xsm) var(--space-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-xl);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+} 
+
+select#unit:focus {
+  outline: none;
 }
 
 .disabled,
@@ -170,7 +189,7 @@ textarea:focus {
 .container h1 {
   color: var(--color-secondary);
   text-shadow: var(--text-shadow-accent-lg);
-} 
+}
 
 #info {
   margin: var(--space-lg) 0;
@@ -424,7 +443,7 @@ textarea:focus {
     --space-2xl: 3rem;
   }
 
-  .container{
+  .container {
     gap: var(--space-xs);
   }
 }
