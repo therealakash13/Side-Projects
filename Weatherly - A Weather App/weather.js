@@ -1,59 +1,43 @@
-var apiKey = "08655e017ab0c6c9c0f30f544c67abb8";
-var city = "Delhi";
-var lang = "hi";
-var searchRes = {
-  name: "",
-  local_names: {},
-  lat: 0,
-  lon: 0,
-  country: "",
-  state: "",
-};
+const apiKey = "08655e017ab0c6c9c0f30f544c67abb8";
+const baseUrl = "https://api.openweathermap.org";
+const imgUrl = "https://openweathermap.org/img/wn";
+let lang = "hi";
+let unit = "metric";
 
 $(function () {
   $("#location").on("input", function () {
     if ($(this).val().trim() === "") {
-      $("#info").addClass("hidden");
-      $("#results").addClass("hidden");
-      $("#resp").addClass("hidden");
+      $("#info, #results, #resp").addClass("hidden");
     } else if ($(this).val().trim().length > 4) {
       fetchGeoocde($(this).val());
     } else {
       $("#search_btn").removeClass("disabled");
     }
+  });
 
-    // $("#search_btn").on("click", function () {
-    //   var loc = $("#location").val();
-    //   fetchData(loc, apiKey, lang);
-    //   $("#results").addClass("hidden");
-    // });
+  $("#results").on("click", ".searchbtn", function () {
+    $("#results").addClass("hidden");
+    $("#info").removeClass("hidden");
 
-    $("#results").on("click", ".searchbtn", function () {
-      $("#results").addClass("hidden");
-      $("#info").removeClass("hidden");
+    let lat = $(this).data("lat");
+    let lon = $(this).data("lon");
+    let name = $(this).data("name");
 
-      var lat = $(this).data("lat");
-      var lon = $(this).data("lon");
-      var name = $(this).data("name");
-      var country = $(this).data("country");
-      var state = $(this).data("state");
+    fetchData(lat, lon, name);
+  });
 
-      fetchData(lat, lon, name);
-    });
-
-    $("#results").on("mouseenter", "li", function () {
-      $("#results li").removeClass("border");
-    });
-    $("#results").on("mouseleave", "li", function () {
-      $("#results li").addClass("border");
-    });
+  $("#results").on("mouseenter", "li", function () {
+    $("#results li").removeClass("border");
+  });
+  $("#results").on("mouseleave", "li", function () {
+    $("#results li").addClass("border");
   });
 
   $(window)
     .on("resize", function () {
       if ($(window).width() < 316) {
         $(".sep").html(`<br/>`);
-      } else{
+      } else {
         $(".sep").html(`<span class="sep">|</span>`);
       }
     })
@@ -65,24 +49,21 @@ function fetchData(latitude, longitude, name) {
     throw new Error("Can't fetch data! Latitude, Longitude required.");
   }
 
-  var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  fetch(url)
+  fetch(
+    `${baseUrl}/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`
+  )
     .then(function (res) {
       return res.json();
     })
     .then(function (data) {
       // console.log(data);
-      $("#info").removeClass("hidden");
 
       $("#city-name").text(data.name);
       $("#country").text(data.sys.country);
 
       $("#weather-main").text(data.weather[0].main);
       $("#weather-desc").text(data.weather[0].description);
-      $("#weather-icon").attr(
-        "src",
-        `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
-      );
+      $("#weather-icon").attr("src", `${imgUrl}/${data.weather[0].icon}.png`);
 
       // Location
       $("#lat").text(Math.round(data.coord.lat * 10) / 10);
@@ -125,16 +106,9 @@ function fetchData(latitude, longitude, name) {
 }
 
 function fetchGeoocde(str) {
-  $("#results ul").empty();
-  $("#resp").empty();
+  $("#results ul, #resp").empty();
 
-  var url1 =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
-    str +
-    "&limit=5&appid=" +
-    apiKey;
-
-  fetch(url1)
+  fetch(`${baseUrl}/geo/1.0/direct?q=${str}&limit=5&appid=${apiKey}`)
     .then(function (res) {
       if (!res.status) {
         throw new Error("Unable to fetch results !");
@@ -146,7 +120,7 @@ function fetchGeoocde(str) {
         throw new Error("No Data Available !");
       }
 
-      var res = data.map((item) => ({
+      let result = data.map((item) => ({
         name: item.name || "",
         local_names: item.local_names || {},
         lat: item.lat || 0,
@@ -155,8 +129,8 @@ function fetchGeoocde(str) {
         state: item.state || "",
       }));
 
-      $.each(res, function (idx, loc) {
-        var $li = $(`
+      $.each(result, function (idx, loc) {
+        let $li = $(`
       <li class="searchbtn border" data-lat="${loc.lat}" data-lon="${loc.lon}" data-name="${loc.name}" data-country="${loc.country}" data-state="${loc.state}">
         <span class="name">${loc.name}</span>
         <span class="state">${loc.state}</span>
@@ -169,9 +143,8 @@ function fetchGeoocde(str) {
       $("#results").removeClass("hidden");
     })
     .catch(function (error) {
-      $("#results").removeClass("hidden");
+      $("#results, #resp").removeClass("hidden");
       $("#info").addClass("hidden");
-      $("#resp").removeClass("hidden");
       $("#resp").css("marginBottom", 0).text(error.message);
     });
 }
