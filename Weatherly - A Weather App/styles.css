@@ -113,15 +113,17 @@ input,
 textarea {
   padding: var(--space-xs) var(--space-md);
   font-size: var(--text-xl);
-  border: var(--border-sm) solid var(--color-accent);
+  border: none;
   border-radius: var(--radius-sm);
   outline: none;
   transition: border-color 0.3s ease;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 input:focus,
 textarea:focus {
-  border-color: var(--color-secondary);
+  border-color: var(--color-accent);
 }
 
 .disabled,
@@ -160,7 +162,7 @@ textarea:focus {
   align-items: center;
   background-color: var(--color-primary);
   border-radius: var(--radius-lg);
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   transition: all 300ms ease-in-out;
   text-align: center;
 }
@@ -168,7 +170,7 @@ textarea:focus {
 .container h1 {
   color: var(--color-secondary);
   text-shadow: var(--text-shadow-accent-lg);
-}
+} 
 
 #info {
   margin: var(--space-lg) 0;
@@ -230,7 +232,6 @@ textarea:focus {
   font-weight: 500;
 }
 
-/* Weather Card Container */
 #weather-container {
   max-width: 90%;
   border-radius: var(--radius-sm);
@@ -245,7 +246,6 @@ textarea:focus {
   transition: all 0.3s ease-in-out;
 }
 
-/* Location Section */
 #weather-container .location {
   display: flex;
   align-items: center;
@@ -375,7 +375,7 @@ textarea:focus {
   border-radius: var(--radius-sm);
 }
 
-/* Responsive Flex for Multiple Columns if needed */
+/* Responsiveness */
 @media (min-width: 1080px) {
   .additional-info,
   .wind-info,
@@ -406,22 +406,26 @@ textarea:focus {
 
 @media (max-width: 440px) {
   :root {
-    --text-xs: 0.25rem; /* 12px */
-    --text-sm: 0.5rem; /* 14px */
-    --text-base: 0.75rem; /* 16px */
-    --text-lg: 0.85rem; /* 18px */
-    --text-xl: 1rem; /* 24px */
-    --text-2xl: 1.25rem; /* 32px */
-    --text-3xl: 1.5rem; /* 40px */
-    --text-4xl: 2rem; /* 48px */
+    --text-xs: 0.25rem;
+    --text-sm: 0.5rem;
+    --text-base: 0.75rem;
+    --text-lg: 0.85rem;
+    --text-xl: 1rem;
+    --text-2xl: 1.25rem;
+    --text-3xl: 1.5rem;
+    --text-4xl: 2rem;
 
-    --space-xsm: 0.125rem; /* 4px */
-    --space-xs: 0.25rem; /* 8px */
-    --space-sm: 0.75rem; /* 16px */
-    --space-md: 1rem; /* 24px */
-    --space-lg: 1.5rem; /* 32px */
-    --space-xl: 2rem; /* 48px */
-    --space-2xl: 3rem; /* 64px */
+    --space-xsm: 0.125rem;
+    --space-xs: 0.25rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+  }
+
+  .container{
+    gap: var(--space-xs);
   }
 }
 
