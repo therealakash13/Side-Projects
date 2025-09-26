@@ -40,7 +40,24 @@ $(function () {
 
       fetchData(lat, lon, name);
     });
+
+    $("#results").on("mouseenter", "li", function () {
+      $("#results li").removeClass("border");
+    });
+    $("#results").on("mouseleave", "li", function () {
+      $("#results li").addClass("border");
+    });
   });
+
+  $(window)
+    .on("resize", function () {
+      if ($(window).width() < 316) {
+        $(".sep").html(`<br/>`);
+      } else{
+        $(".sep").html(`<span class="sep">|</span>`);
+      }
+    })
+    .trigger("resize");
 });
 
 function fetchData(latitude, longitude, name) {
@@ -54,7 +71,7 @@ function fetchData(latitude, longitude, name) {
       return res.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       $("#info").removeClass("hidden");
 
       $("#city-name").text(data.name);
@@ -140,7 +157,7 @@ function fetchGeoocde(str) {
 
       $.each(res, function (idx, loc) {
         var $li = $(`
-      <li class="searchbtn" data-lat="${loc.lat}" data-lon="${loc.lon}" data-name="${loc.name}" data-country="${loc.country}" data-state="${loc.state}">
+      <li class="searchbtn border" data-lat="${loc.lat}" data-lon="${loc.lon}" data-name="${loc.name}" data-country="${loc.country}" data-state="${loc.state}">
         <span class="name">${loc.name}</span>
         <span class="state">${loc.state}</span>
         <span class="country">${loc.country}</span>
