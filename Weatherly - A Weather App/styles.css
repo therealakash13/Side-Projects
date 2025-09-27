@@ -310,10 +310,12 @@ select#unit:focus {
 
 .main {
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: var(--color-secondary);
   box-shadow: var(--shadow-sm-accent);
   border-radius: var(--radius-lg);
+  min-width: 18vw;
 }
 
 .main p {
