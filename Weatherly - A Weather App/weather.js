@@ -6,15 +6,16 @@ let unit = "metric";
 let lat = 0;
 let long = 0;
 let cname = "";
+let weather = {};
 
 $(function () {
   $("#location").on("input", function () {
     if ($(this).val().trim() === "") {
-      $("#info, #results, #resp").addClass("hidden");
+      $("#info, #results, #resp, #unit").addClass("hidden");
+      weather = {};
     } else if ($(this).val().trim().length > 3) {
+      $("#resp").addClass("hidden");
       fetchGeoocde($(this).val());
-    } else {
-      $("#search_btn").removeClass("disabled");
     }
   });
 
@@ -24,16 +25,8 @@ $(function () {
 
     lat = $(this).data("lat");
     long = $(this).data("lon");
-    cname = $(this).data("name");
 
     fetchData(lat, long, cname);
-  });
-
-  $("#results").on("mouseenter", "li", function () {
-    $("#results li").removeClass("border");
-  });
-  $("#results").on("mouseleave", "li", function () {
-    $("#results li").addClass("border");
   });
 
   $(window)
@@ -48,9 +41,9 @@ $(function () {
 
   $("#unit").on("change", function () {
     unit = $(this).val();
-    $("#results ul").remove();
+    // $("#results ul").remove();
     $("#info").addClass("hidden");
-    fetchData(lat, long, cname);
+    fetchData(weather.coord.lat, weather.coord.lon);
     if (unit === "imperial") {
       $(".deg").text("°F");
       $(".speed-unit").text("mph");
@@ -59,10 +52,52 @@ $(function () {
       $(".speed-unit").text("m/s");
     }
     $("#info").removeClass("hidden");
-
-    // Whenever the unit changes and search again there is nothing in results is hidden i guess
   });
 });
+
+function dataSetter(weatherData) {
+  // Location
+  $("#city-name").text(weatherData.name);
+  $("#country").text(weatherData.sys.country);
+  $("#lat").text(Math.round(weatherData.coord.lat * 10) / 10);
+  $("#long").text(Math.round(weatherData.coord.lon * 10) / 10);
+
+  // Weather Overview
+  $("#weather-main").text(weatherData.weather[0].main);
+  $("#weather-desc").text(weatherData.weather[0].description);
+  $("#weather-icon").attr(
+    "src",
+    `${imgUrl}/${weatherData.weather[0].icon}.png`
+  );
+
+  // Metric: C | Imperial: F
+  $("#temp").text(weatherData.main.temp);
+  $("#feels-like").text(weatherData.main.feels_like);
+  $("#temp-min").text(weatherData.main.temp_min);
+  $("#temp-max").text(weatherData.main.temp_max);
+
+  // Additional Info
+  $("#humidity").text(weatherData.main.humidity); // %
+  $("#pressure").text(weatherData.main.pressure); // hPa
+  $("#visibility").text(weatherData.visibility); // m
+
+  // Wind Info
+  $("#wind-deg").text(weatherData.wind.deg); // meteorological degrees
+  $("#wind-gust").text(weatherData.wind.gust); // Imp: miles/hour  metric: meter/sec
+  $("#wind-speed").text(weatherData.wind.speed); // Imp: miles/hour  metric: meter/sec
+
+  // Cloud: %
+  $("#clouds-all").text(weatherData.clouds.all);
+
+  // Sunrise/Sunset: unix, UTC
+  // Convert timestamp to local time
+  $("#sunrise").text(
+    new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()
+  );
+  $("#sunset").text(
+    new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()
+  );
+}
 
 function fetchData(latitude, longitude, name) {
   if (!latitude || !longitude) {
@@ -76,51 +111,10 @@ function fetchData(latitude, longitude, name) {
       return res.json();
     })
     .then(function (data) {
-      // Location
-      $("#city-name").text(data.name);
-      $("#country").text(data.sys.country);
-      $("#lat").text(Math.round(data.coord.lat * 10) / 10);
-      $("#long").text(Math.round(data.coord.lon * 10) / 10);
-
-      // Weather Overview
-      $("#weather-main").text(data.weather[0].main);
-      $("#weather-desc").text(data.weather[0].description);
-      $("#weather-icon").attr("src", `${imgUrl}/${data.weather[0].icon}.png`);
-
-      // Temperature
-      // Imperial: F
-      // $("#temp").text((data.main.temp - 273.15).toFixed(1));
-      // $("#feels-like").text((data.main.feels_like - 273.15).toFixed(1));
-      // $("#temp-min").text((data.main.temp_min - 273.15).toFixed(1));
-      // $("#temp-max").text((data.main.temp_max - 273.15).toFixed(1));
-
-      // Metric: C
-      $("#temp").text(data.main.temp);
-      $("#feels-like").text(data.main.feels_like);
-      $("#temp-min").text(data.main.temp_min);
-      $("#temp-max").text(data.main.temp_max);
-
-      // Additional Info
-      $("#humidity").text(data.main.humidity); // %
-      $("#pressure").text(data.main.pressure); // hPa
-      $("#visibility").text(data.visibility); // m
-
-      // Wind Info
-      $("#wind-speed").text(data.wind.speed); // meter/sec
-      $("#wind-deg").text(data.wind.deg); // meteorological degrees
-      $("#wind-gust").text(data.wind.gust); // Imp: miles/hour  metric: meter/sec
-
-      // Cloud
-      $("#clouds-all").text(data.clouds.all); // %
-
-      // Sunrise/Sunset
-      // Convert timestamp to local time
-      $("#sunrise").text(
-        new Date(data.sys.sunrise * 1000).toLocaleTimeString()
-      ); // unix, UTC
-      $("#sunset").text(new Date(data.sys.sunset * 1000).toLocaleTimeString()); // unix, UTC
-
+      weather = data;
+      dataSetter(weather);
       $("#info").removeClass("hidden");
+      $("#unit").removeClass("hidden");
     })
     .catch(function (error) {
       console.log(error);
@@ -129,6 +123,7 @@ function fetchData(latitude, longitude, name) {
 
 function fetchGeoocde(str) {
   $("#results ul, #resp").empty();
+  weather = {};
 
   fetch(`${baseUrl}/geo/1.0/direct?q=${str}&limit=5&appid=${apiKey}`)
     .then(function (res) {
@@ -162,6 +157,7 @@ function fetchGeoocde(str) {
         $("#results ul").append($li);
       });
 
+      $("#resp").addClass("hidden");
       $("#results").removeClass("hidden");
     })
     .catch(function (error) {

@@ -25,10 +25,6 @@
               placeholder="Enter the city name..."
               name="city"
             />
-            <select id="unit">
-              <option value="metric" selected>Metric (°C, m/s)</option>
-              <option value="imperial">Imperial (°F, mph)</option>
-            </select>
           </div>
           <div id="results" class="hidden">
             <ul></ul>
@@ -46,6 +42,12 @@
                 Lat:<span id="lat">--</span>
                 <span class="sep">|</span> Long:<span id="long">--</span>
               </p>
+
+              <!-- Selector -->
+              <select class="hidden" id="unit">
+                <option value="metric" selected>Metric (°C, m/s)</option>
+                <option value="imperial">Imperial (°F, mph)</option>
+              </select>
             </div>
 
             <!-- Weather Overview -->
@@ -79,9 +81,15 @@
 
             <!-- Wind Info -->
             <div class="wind-info">
-              <p>Speed: <span id="wind-speed">--</span> <em class="speed-unit">m/s</em></p>
+              <p>
+                Speed: <span id="wind-speed">--</span>
+                <em class="speed-unit">m/s</em>
+              </p>
               <p>Direction: <span id="wind-deg">--</span>°</p>
-              <p>Gust: <span id="wind-gust">--</span> <em class="speed-unit">m/s</em></p>
+              <p>
+                Gust: <span id="wind-gust">--</span>
+                <em class="speed-unit">m/s</em>
+              </p>
             </div>
 
             <!-- Clouds -->

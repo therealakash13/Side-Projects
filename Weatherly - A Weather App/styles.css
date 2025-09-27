@@ -121,8 +121,8 @@ textarea {
   border-radius: var(--radius-sm);
   outline: none;
   transition: border-color 0.3s ease;
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 input:focus,
@@ -131,14 +131,19 @@ textarea:focus {
 }
 
 select#unit {
-  background: var(--color-secondary);
-  color: var(--color-primary);  
+  background-color: var(--color-primary);
+  outline: none;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-text);  
   border-radius: var(--radius-sm);
   padding: var(--space-xsm) var(--space-sm);
   font-family: var(--font-base);
   font-size: var(--text-xl);
   cursor: pointer;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  /* position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm); */
 } 
 
 select#unit:focus {
@@ -203,10 +208,12 @@ select#unit:focus {
   margin-top: var(--space-sm);
   border-radius: var(--radius-sm);
 }
+
 #results > h3 {
   padding: var(--space-md);
   color: var(--color-accent);
 }
+
 #results ul {
   list-style: none;
   text-align: center;
@@ -215,15 +222,13 @@ select#unit:focus {
   justify-content: center;
   gap: var(--space-xs);
 }
+
 #results li {
   padding: var(--space-sm) var(--space-md);
   display: flex;
   align-items: center;
   gap: var(--space-sm);
   cursor: pointer;
-}
-.border {
-  border-bottom: 1px solid var(--color-accent);
 }
 
 #results li:hover {
@@ -232,6 +237,7 @@ select#unit:focus {
   scale: 1.1;
   border-radius: var(--radius-lg);
 }
+
 #results li > span[class="name"] {
   font-family: var(--font-heading);
   color: var(--color-accent);
@@ -263,6 +269,7 @@ select#unit:focus {
   gap: var(--space-lg);
   text-align: center;
   transition: all 0.3s ease-in-out;
+  /* position: relative; */
 }
 
 #weather-container .location {
@@ -395,6 +402,13 @@ select#unit:focus {
 }
 
 /* Responsiveness */
+@media (max-width: 1315px) {
+  #weather-container .location {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
 @media (min-width: 1080px) {
   .additional-info,
   .wind-info,
@@ -410,10 +424,7 @@ select#unit:focus {
     flex-direction: column;
     min-width: 80%;
   }
-  #weather-container .location {
-    flex-direction: column;
-    gap: var(--space-xsm);
-  }
+ 
   .temperature {
     border-top: 1px solid var(--color-accent);
     border-left: none;
