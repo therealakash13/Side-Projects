@@ -101,7 +101,7 @@
               <ul>
                 <li class="tab active" data-tab="skills">Skills</li>
                 <li class="tab" data-tab="education">Education</li>
-                <li class="tab" data-tab="work">Work Experience</li>
+                <li class="tab" data-tab="work">Experience</li>
                 <li class="tab" data-tab="certifications">Certifications</li>
               </ul>
             </div>
@@ -134,14 +134,20 @@
                 </ul>
               </div>
 
-              <!-- Seperate span and p for all the tab content and place them in seperate li inside the ul tag and design the remainig -->
               <!-- Education -->
               <div class="tab-content" id="education">
                 <ul>
-                  <li><span>X</span>Greenfields Public School</li>
-                  <li><span>XII</span>Greenfields Public School</li>
                   <li>
-                    <span>Graduation</span>Maharishi Dayanand University, Rohtak
+                    <span>X</span>
+                    <p>Greenfields Public School</p>
+                  </li>
+                  <li>
+                    <span>XII</span>
+                    <p>Greenfields Public School</p>
+                  </li>
+                  <li>
+                    <span>Graduation</span>
+                    <p>Maharishi Dayanand University, Rohtak</p>
                   </li>
                 </ul>
               </div>
@@ -171,16 +177,21 @@
                 <ul>
                   <li>
                     <span>Network Bulls</span>
-                    One-day workshop: configured Cisco routers using Packet
-                    Tracer and GNS.
+                    <p>
+                      One-day workshop: configured Cisco routers using Packet
+                      Tracer and GNS.
+                    </p>
                   </li>
                   <li>
                     <span>Online Courses</span>
-                    The Complete Full-Stack Web Dev Bootcamp – Angela Yu (Udemy)
+                    <p>
+                      The Complete Full-Stack Web Dev Bootcamp – Angela Yu
+                      (Udemy).
+                    </p>
                   </li>
                   <li>
                     <span>YouTube</span>
-                    Learned from multiple playlists and free resources.
+                    <p>Learned from multiple playlists and free resources.</p>
                   </li>
                 </ul>
               </div>
@@ -206,12 +217,12 @@
                     A real-time weather forecast app with location-based data
                     fetching and minimal UI using Openweathermap API at core.
                   </p>
-                  <p class="status-btn">
-                    Technologies Used:<span>JavaScript, API, JQuery</span>
+                  <p class="tech">
+                    Technologies Used:<em>JavaScript, API, JQuery</em>
                   </p>
                   <a
                     href="https://therealakash13.github.io/Side-Projects/Weatherly%20-%20A%20Weather%20App/"
-                    class="btn-primary"
+                    class="btn-secondary"
                     >Live Link</a
                   >
                 </div>
@@ -230,10 +241,10 @@
                     custom components, and responsive layouts for a smooth user
                     experience.
                   </p>
-                  <p class="status-btn">
-                    Technologies Used:<span>React, Tailwind CSS</span>
+                  <p class="tech">
+                    Technologies Used:<em>React, Tailwind CSS</em>
                   </p>
-                  <a href="#" class="btn-primary">Live Link</a>
+                  <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
 
@@ -246,10 +257,10 @@
                     A job listing platform where users can search, filter, and
                     apply for jobs with a sleek design and API integration.
                   </p>
-                  <p class="status-btn">
-                    Technologies Used:<span>Angular, PrimeNG</span>
+                  <p class="tech">
+                    Technologies Used:<em>Angular, PrimeNG</em>
                   </p>
-                  <a href="#" class="btn-primary">Live Link</a>
+                  <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
 
@@ -262,10 +273,8 @@
                     A restaurant website UI concept featuring menu pages,
                     animations, and modern visuals.
                   </p>
-                  <p class="status-btn">
-                    Technologies Used:<span>React, Redux</span>
-                  </p>
-                  <a href="#" class="btn-primary">Live Link</a>
+                  <p class="tech">Technologies Used:<em>React, Redux</em></p>
+                  <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
 
@@ -281,10 +290,8 @@
                     Spotify web player clone featuring custom audio controls and
                     music player functionalities.
                   </p>
-                  <p class="status-btn">
-                    Technologies Used:<span>HTML, CSS, JS</span>
-                  </p>
-                  <a href="#" class="btn-primary">Live Link</a>
+                  <p class="tech">Technologies Used:<em>HTML, CSS, JS</em></p>
+                  <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
 
@@ -300,8 +307,8 @@
                     YouTube video browsing UI clone featuring a responsive
                     design and channel view pages.
                   </p>
-                  <p class="status-btn">Technologies Used:<span>React</span></p>
-                  <a href="#" class="btn-primary">Live Link</a>
+                  <p class="tech">Technologies Used:<em>React</em></p>
+                  <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
             </div>
@@ -314,7 +321,11 @@
             <div class="about-container">
               <!-- Profile Image -->
               <div class="about-img">
-                <img src="./assets/images/mehero.png" alt="Akash's Picture" />
+                <img
+                  class="hero-img"
+                  src="./assets/images/mehero.png"
+                  alt="Akash's Picture"
+                />
               </div>
 
               <!-- Info -->
@@ -329,10 +340,22 @@
 
                 <div class="about-details">
                   <ul>
-                    <li><strong>Email:</strong> therealakash13@gmail.com</li>
-                    <li><strong>Phone:</strong> +91 9971104373</li>
-                    <li><strong>Location:</strong> Delhi, India</li>
-                    <li><strong>Hobbies:</strong> Code, Chai, Anime, Music</li>
+                    <li>
+                      <span>Email:</span>
+                      <p>therealakash13@gmail.com</p>
+                    </li>
+                    <li>
+                      <span>Phone:</span>
+                      <p>+91 9971104373</p>
+                    </li>
+                    <li>
+                      <span>Location:</span>
+                      <p>Delhi, India</p>
+                    </li>
+                    <li>
+                      <span>Hobbies:</span>
+                      <p>Code, Chai, Anime, Music</p>
+                    </li>
                   </ul>
                 </div>
 
@@ -364,7 +387,6 @@
               <!-- Contact Form -->
               <form class="contact-form" action="#" method="POST">
                 <div class="form-group">
-                  <label for="name">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -375,7 +397,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="email">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -386,7 +407,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="message">Message</label>
                   <textarea
                     id="message"
                     name="message"
