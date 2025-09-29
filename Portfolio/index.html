@@ -99,13 +99,16 @@
             <!-- Tabs -->
             <div class="resume-tabs">
               <ul>
+                <li class="tab tab-menu-btn" data-tab="menu">
+                  <img src="./assets/images/menu.svg" alt="Menu" />
+                </li>
                 <li class="tab active" data-tab="skills">Skills</li>
                 <li class="tab" data-tab="education">Education</li>
                 <li class="tab" data-tab="work">Experience</li>
                 <li class="tab" data-tab="certifications">Certifications</li>
               </ul>
             </div>
-
+            
             <!-- Content -->
             <div class="resume-content">
               <!-- Skills -->
@@ -218,7 +221,7 @@
                     fetching and minimal UI using Openweathermap API at core.
                   </p>
                   <p class="tech">
-                    Technologies Used:<em>JavaScript, API, JQuery</em>
+                    Technologies:<em>JavaScript, API, JQuery</em>
                   </p>
                   <a
                     href="https://therealakash13.github.io/Side-Projects/Weatherly%20-%20A%20Weather%20App/"
@@ -241,9 +244,7 @@
                     custom components, and responsive layouts for a smooth user
                     experience.
                   </p>
-                  <p class="tech">
-                    Technologies Used:<em>React, Tailwind CSS</em>
-                  </p>
+                  <p class="tech">Technologies:<em>React, Tailwind CSS</em></p>
                   <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
@@ -257,9 +258,7 @@
                     A job listing platform where users can search, filter, and
                     apply for jobs with a sleek design and API integration.
                   </p>
-                  <p class="tech">
-                    Technologies Used:<em>Angular, PrimeNG</em>
-                  </p>
+                  <p class="tech">Technologies:<em>Angular, PrimeNG</em></p>
                   <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
@@ -273,7 +272,7 @@
                     A restaurant website UI concept featuring menu pages,
                     animations, and modern visuals.
                   </p>
-                  <p class="tech">Technologies Used:<em>React, Redux</em></p>
+                  <p class="tech">Technologies:<em>React, Redux</em></p>
                   <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
@@ -290,7 +289,7 @@
                     Spotify web player clone featuring custom audio controls and
                     music player functionalities.
                   </p>
-                  <p class="tech">Technologies Used:<em>HTML, CSS, JS</em></p>
+                  <p class="tech">Technologies:<em>HTML, CSS, JS</em></p>
                   <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
@@ -307,7 +306,7 @@
                     YouTube video browsing UI clone featuring a responsive
                     design and channel view pages.
                   </p>
-                  <p class="tech">Technologies Used:<em>React</em></p>
+                  <p class="tech">Technologies:<em>React</em></p>
                   <a href="#" class="btn-secondary">Live Link</a>
                 </div>
               </div>
@@ -424,31 +423,7 @@
       </div>
     </div>
 
-    <script>
-      const menuBtn = document.getElementById("menu-btn");
-      const closeBtn = document.getElementById("close-btn");
-      const navLinks = document.getElementById("nav-links");
-
-      const tabs = document.querySelectorAll(".resume-tabs .tab");
-      const contents = document.querySelectorAll(".tab-content");
-
-      menuBtn.addEventListener("click", () => {
-        navLinks.classList.add("show");
-      });
-
-      closeBtn.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-      });
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          tabs.forEach((t) => t.classList.remove("active"));
-          contents.forEach((c) => c.classList.remove("active"));
-
-          tab.classList.add("active");
-          document.getElementById(tab.dataset.tab).classList.add("active");
-        });
-      });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
