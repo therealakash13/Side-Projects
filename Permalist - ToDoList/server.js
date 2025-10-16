@@ -67,3 +67,8 @@ server.post("/delete", async (req, res) => {
 server.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}.`);
 });
+
+// Possible future upgrade 
+//  1. Sorting based on creation date and other criterion
+//  2. Multiple List like ( Today / This Week / This Month ) or ( Completed / Postponed / Dropped )
+//  3. Multi User functionality maybe logout login based  
