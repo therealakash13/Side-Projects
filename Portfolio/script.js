@@ -1,3 +1,7 @@
+(function () {
+  emailjs.init("aCmjro_bmIHU4V_jY");
+})();
+
 $(function () {
   $("#menu-btn").on("click", function () {
     $("#nav-links").addClass("show");
@@ -36,5 +40,26 @@ $(function () {
         .children("img")
         .attr("src", "./assets/images/close.svg");
     }
+  });
+
+  $(".contact-form").on("submit", function (e) {
+    e.preventDefault();
+
+    emailjs
+      .send("service_5x8ly38", "template_yoviw1b", {
+        name: $("#name").val(),
+        email: $("#email").val(),
+        message: $("#message").val(),
+      })
+      .then(
+        function (response) {
+          alert("Message sent successfully!");
+          $(".contact-form")[0].reset();
+        },
+        function (error) {
+          alert("Failed to send message. Try again later.");
+          console.log(error);
+        }
+      );
   });
 });
