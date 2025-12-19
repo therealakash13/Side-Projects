@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h2 class="title">Where in the World?</h2>
+        <div class="toggle">
+            <img src="./assets/moon-outline.svg" alt="dark mode icon"></img>
+            <span>Dark Mode</span>
+        </div>
+    </header>
+
+    <div class="search">
+        <div class="search-bar">
+            <img src="./assets/search-outline.svg" alt="">
+            <input type="text" name="searchTerm" id="search-term" placeholder="Search for a Country...">
+        </div>
+        <select name="filter" id="filter">
+            <option> -- Select -- </option>
+            <option> Africa </option>
+            <option> America </option>
+            <option> Asia </option>
+            <option> Oceania </option>
+        </select>
+    </div>
+
+    <div class="card-container"></div>
+</body>
+
+</html>
