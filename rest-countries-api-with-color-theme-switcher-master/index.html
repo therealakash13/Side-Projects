@@ -7,7 +7,7 @@
     <title>Country</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -25,13 +25,15 @@
             <input type="text" name="searchTerm" id="search-term" placeholder="Search for a Country...">
         </div>
         <select name="filter" id="filter">
-            <option> -- Select -- </option>
-            <option> Africa </option>
-            <option> America </option>
-            <option> Asia </option>
-            <option> Oceania </option>
+            <option> Filter by Region </option>
+            <option value="Africa"> Africa </option>
+            <option value="America"> America </option>
+            <option value="Asia"> Asia </option>
+            <option value="Oceania"> Oceania </option>
         </select>
     </div>
+
+    <div class="card-container"></div>
 
     <div class="card-container"></div>
 </body>
