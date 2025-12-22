@@ -7,7 +7,7 @@ fetch(apiURL)
   .then((data) => data.json())
   .then(async (res) => {
     const countryData = res[0];
-    console.log(countryData);
+    // console.log(countryData);
     const nativeName = Object.values(countryData.name.nativeName)[0].common;
     const currencies = Object.values(countryData.currencies)
       .map((curr) => `${curr.name} (${curr.symbol})`)

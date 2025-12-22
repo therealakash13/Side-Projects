@@ -24,13 +24,16 @@
             <img src="./assets/search-outline.svg" alt="">
             <input type="text" name="searchTerm" id="search-term" placeholder="Search for a Country...">
         </div>
-        <select name="filter" id="filter">
-            <option> Filter by Region </option>
-            <option value="Africa"> Africa </option>
-            <option value="America"> America </option>
-            <option value="Asia"> Asia </option>
-            <option value="Oceania"> Oceania </option>
-        </select>
+        <div class="selector">
+            <img id="close-icon" src="./assets/close-circle-outline.svg" alt="close icon">
+            <select name="filter" id="filter-by-region">
+                <option value="none" hidden> Filter by Region </option>
+                <option value="Africa"> Africa </option>
+                <option value="America"> America </option>
+                <option value="Asia"> Asia </option>
+                <option value="Oceania"> Oceania </option>
+            </select>
+        </div>
     </div>
 
     <div class="card-container"></div>
