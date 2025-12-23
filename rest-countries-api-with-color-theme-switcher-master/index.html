@@ -14,18 +14,19 @@
     <header>
         <h2 class="title">Where in the World?</h2>
         <div class="toggle">
-            <img src="./assets/moon-outline.svg" alt="dark mode icon"></img>
-            <span>Dark Mode</span>
+            <ion-icon id="dark-mode-icon" name="moon-outline"></ion-icon>
+            <ion-icon id="light-mode-icon" name="sunny-outline"></ion-icon>
+            <span id="toggle-text">Dark Mode</span>
         </div>
     </header>
 
     <div class="search">
         <div class="search-bar">
-            <img src="./assets/search-outline.svg" alt="">
+            <ion-icon name="search-outline"></ion-icon>
             <input type="text" name="searchTerm" id="search-term" placeholder="Search for a Country...">
         </div>
         <div class="selector">
-            <img id="close-icon" src="./assets/close-circle-outline.svg" alt="close icon">
+            <ion-icon id="close-icon" name="close-circle-outline"></ion-icon>
             <select name="filter" id="filter-by-region">
                 <option value="none" hidden> Filter by Region </option>
                 <option value="Africa"> Africa </option>
@@ -37,10 +38,10 @@
     </div>
 
     <div class="card-container"></div>
+    <button class="toTop" aria-label="Back to top"><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
 
-    <div class="card-container"></div>
-
-    <button class="toTop" aria-label="Back to top"><img src="./assets/arrow-up-circle-outline.svg"></button>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

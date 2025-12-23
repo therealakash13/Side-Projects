@@ -3,10 +3,32 @@ const filterByRegion = document.querySelector("#filter-by-region");
 const closeIcon = document.querySelector("#close-icon");
 const toTopBtn = document.querySelector(".toTop");
 const searchInput = document.querySelector("#search-term");
+const darkModeToggle = document.querySelector(".toggle");
+const toggleBtn = document.querySelector("#toggle-text");
+const darkIcon = document.querySelector("#dark-mode-icon");
+const lightIcon = document.querySelector("#light-mode-icon");
+
 const fetchAllURL =
   "https://restcountries.com/v3.1/all?fields=name,capital,region,flags,population,currencies";
 
 let allCountries = [];
+
+// Dark Mode
+darkModeToggle.addEventListener("click", () => {
+  const root = document.documentElement;
+
+  if (root.getAttribute("dark-theme") === "dark") {
+    darkIcon.style.display = "block";
+    lightIcon.style.display = "none";
+    toggleBtn.innerText = "Dark Mode";
+    root.removeAttribute("dark-theme");
+  } else {
+    darkIcon.style.display = "none";
+    lightIcon.style.display = "block";
+    toggleBtn.innerText = "Light Mode";
+    root.setAttribute("dark-theme", "dark");
+  }
+});
 
 // Scroll to top
 toTopBtn.addEventListener("click", () => {
@@ -35,6 +57,7 @@ function renderCountries(countries) {
 
 // IIFE
 (async function init() {
+  lightIcon.style.display = "none";
   showSkeletons(12);
   allCountries = await fetchCountries(fetchAllURL);
   renderCountries(allCountries);
@@ -133,3 +156,5 @@ function showSkeletons(count = 8) {
     cardContainer.appendChild(card);
   }
 }
+
+// Implement dark mode with icons because script icons are slow and set mode to localstorage for persistence

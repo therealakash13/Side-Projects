@@ -1,7 +1,32 @@
 const params = new URLSearchParams(window.location.search);
 const countryName = params.get("name");
+const darkModeToggle = document.querySelector(".toggle");
+const toggleBtn = document.querySelector("#toggle-text");
+const darkIcon = document.querySelector("#dark-mode-icon");
+const lightIcon = document.querySelector("#light-mode-icon");
 
 const apiURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
+
+// Dark Mode
+darkModeToggle.addEventListener("click", () => {
+  const root = document.documentElement;
+
+  if (root.getAttribute("dark-theme") === "dark") {
+    darkIcon.style.display = "block";
+    lightIcon.style.display = "none";
+    toggleBtn.innerText = "Dark Mode";
+    root.removeAttribute("dark-theme");
+  } else {
+    darkIcon.style.display = "none";
+    lightIcon.style.display = "block";
+    toggleBtn.innerText = "Light Mode";
+    root.setAttribute("dark-theme", "dark");
+  }
+});
+
+(function init2() {
+  lightIcon.style.display = "none";
+})();
 
 fetch(apiURL)
   .then((data) => data.json())
@@ -16,7 +41,7 @@ fetch(apiURL)
       .map((lang) => `${lang}`)
       .join(", ");
     const population = Number(countryData.population).toLocaleString("en-IN");
-    const capitals =  countryData.capital.join(", ");
+    const capitals = countryData.capital.join(", ");
 
     const flagImg = document.querySelector(".flag-img");
     flagImg.src = countryData.flags.svg;

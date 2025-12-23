@@ -12,16 +12,20 @@
     <header>
         <h2 class="title">Where in the World?</h2>
         <div class="toggle">
-            <img src="./assets/moon-outline.svg" alt="dark mode icon"></img>
-            <span>Dark Mode</span>
+            <ion-icon id="dark-mode-icon" name="moon-outline"></ion-icon>
+            <ion-icon id="light-mode-icon" name="sunny-outline"></ion-icon>
+            <span id="toggle-text">Dark Mode</span>
         </div>
     </header>
 
-    <a class="back-button" href="/"><img src="./assets/arrow-back-outline.svg" alt="back button"> &nbsp;Back</a>
+    <a class="back-button" href="/"><ion-icon name="arrow-back-circle-outline"></ion-icon><span>Back</span></a>
 
     <div class="main-container">
         <div class="img-container"><img class="flag-img" ></div>
         <div class="info-container"></div>
     </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
