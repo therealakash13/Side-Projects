@@ -7,6 +7,8 @@ const darkModeToggle = document.querySelector(".toggle");
 const toggleBtn = document.querySelector("#toggle-text");
 const darkIcon = document.querySelector("#dark-mode-icon");
 const lightIcon = document.querySelector("#light-mode-icon");
+const root = document.documentElement;
+const cacheExpiry = 24 * 60 * 60 * 1000; // 24 hours expiration of time for cache
 
 const fetchAllURL =
   "https://restcountries.com/v3.1/all?fields=name,capital,region,flags,population,currencies";
@@ -15,18 +17,20 @@ let allCountries = [];
 
 // Dark Mode
 darkModeToggle.addEventListener("click", () => {
-  const root = document.documentElement;
+  const isDark = root.getAttribute("dark-theme") === "dark";
 
-  if (root.getAttribute("dark-theme") === "dark") {
+  if (isDark) {
+    root.removeAttribute("dark-theme");
+    localStorage.setItem("theme", "light");
     darkIcon.style.display = "block";
     lightIcon.style.display = "none";
     toggleBtn.innerText = "Dark Mode";
-    root.removeAttribute("dark-theme");
   } else {
+    root.setAttribute("dark-theme", "dark");
+    localStorage.setItem("theme", "dark");
     darkIcon.style.display = "none";
     lightIcon.style.display = "block";
     toggleBtn.innerText = "Light Mode";
-    root.setAttribute("dark-theme", "dark");
   }
 });
 
@@ -59,15 +63,38 @@ function renderCountries(countries) {
 (async function init() {
   lightIcon.style.display = "none";
   showSkeletons(12);
-  allCountries = await fetchCountries(fetchAllURL);
+  allCountries = await fetchCountries(fetchAllURL, "allCountries");
   renderCountries(allCountries);
 })();
 
+(function themeInit() {
+  const theme = localStorage.getItem("theme");
+
+  if (theme === "dark") {
+    root.setAttribute("dark-theme", "dark");
+    darkIcon.style.display = "none";
+    lightIcon.style.display = "block";
+    toggleBtn.innerText = "Light Mode";
+  } else {
+    lightIcon.style.display = "none";
+  }
+})();
+
 // Fetch
-async function fetchCountries(url) {
+async function fetchCountries(url, cacheKey) {
+  const cachedData = getCache(cacheKey);
+
+  if (cachedData) {
+    console.log("✅ USING LOCAL CACHE");
+    return cachedData;
+  }
+
   try {
+    console.log("🌐 FETCHING FROM NETWORK");
     const res = await fetch(url);
-    return await res.json();
+    const data = await res.json();
+    setCache(cacheKey, data);
+    return data;
   } catch (err) {
     console.log(err);
     alert(err.message);
@@ -157,4 +184,29 @@ function showSkeletons(count = 8) {
   }
 }
 
-// Implement dark mode with icons because script icons are slow and set mode to localstorage for persistence
+// Implement dark mode with icons because script icons are slow
+// Getting Cache
+function getCache(key) {
+  const cached = localStorage.getItem(key); // Fetch key from cache from localStorage
+  if (!cached) return null; // if no cache return null
+
+  const { data, timeStamp } = JSON.parse(cached); // Destructuring data and timestamp from cache
+
+  // If its expired remove from localStorage
+  if (Date.now() - timeStamp > cacheExpiry) {
+    localStorage.removeItem(key);
+    return null;
+  }
+
+  return data; // If not expired return data of that key
+}
+
+// Setting Cache
+function setCache(key, data) {
+  // Creating payload to store data in a key value pair
+  const payload = {
+    data,
+    timeStamp: Date.now(),
+  };
+  localStorage.setItem(key, JSON.stringify(payload)); // Storing payload in localStorage
+}

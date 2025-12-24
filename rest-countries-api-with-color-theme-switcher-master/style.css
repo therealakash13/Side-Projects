@@ -257,10 +257,10 @@ header {
   justify-content: space-between;
   margin-top: var(--space-md);
   gap: var(--space-lg);
-  background-color: var(--color-primary);
 }
 
 .search-bar {
+  background-color: var(--color-primary);
   display: flex;
   width: 100%;
   align-items: center;
