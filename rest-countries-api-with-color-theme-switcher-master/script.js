@@ -138,7 +138,7 @@ filterByRegion.addEventListener("change", async (e) => {
 function createCard(country) {
   const card = document.createElement("a");
   card.className = "card";
-  card.href = `Side-Projects/rest-countries-api-with-color-theme-switcher-master/country.html?name=${encodeURIComponent(country.name.common)}`;
+  card.href = `/country.html?name=${encodeURIComponent(country.name.common)}`;
 
   const img = document.createElement("img");
   img.src = `${country.flags.svg}`;
