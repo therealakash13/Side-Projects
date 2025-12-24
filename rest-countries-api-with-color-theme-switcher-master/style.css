@@ -53,13 +53,13 @@
 }
 
 [dark-theme="dark"] {
-  --color-bg: hsl(207, 26%, 17%);        /* BACKGROUND → dark */
-  --color-text: hsl(0, 0%, 100%);        /* TEXT → light */
+  --color-bg: hsl(207, 26%, 17%); /* BACKGROUND → dark */
+  --color-text: hsl(0, 0%, 100%); /* TEXT → light */
 
-  --color-primary: hsl(209, 23%, 22%);   /* CARDS / NAVBAR → dark surface */
-  --color-secondary: hsl(0, 0%, 100%);   /* BUTTONS / LINKS → light */
+  --color-primary: hsl(209, 23%, 22%); /* CARDS / NAVBAR → dark surface */
+  --color-secondary: hsl(0, 0%, 100%); /* BUTTONS / LINKS → light */
 
-  --color-accent: hsl(210, 15%, 70%);    /* HOVER / HIGHLIGHTS → soft contrast */
+  --color-accent: hsl(210, 15%, 70%); /* HOVER / HIGHLIGHTS → soft contrast */
 }
 
 * {
@@ -271,7 +271,7 @@ header {
   color: var(--color-accent);
 }
 
-#close-icon{
+#close-icon {
   display: none;
 }
 
@@ -356,7 +356,7 @@ header {
   font-size: var(--text-2xl);
 }
 
-.back-button span{
+.back-button span {
   font-size: var(--text-lg);
 }
 
@@ -382,11 +382,14 @@ header {
   display: flex;
   align-items: center;
   overflow: hidden;
+  box-shadow: var(--shadow-lg-accent);
+  border-radius: var(--radius-sm);
 }
 
 .flag-img {
   height: 400px;
-  border-radius: var(--radius-sm);
+  overflow: hidden;
+  object-fit: cover;
 }
 
 .country-info {
@@ -415,6 +418,7 @@ header {
   font-size: var(--text-lg);
   font-weight: 600;
   text-wrap: wrap;
+  max-width: 800px;
 }
 
 .border-info a {
@@ -477,7 +481,7 @@ header {
 }
 
 @media (max-width: 480px) {
-    .card-container {
+  .card-container {
     grid-template-columns: 1fr;
   }
 
@@ -496,7 +500,7 @@ header {
 }
 
 @media (max-width: 400px) {
-  select{
+  select {
     font-size: var(--text-lg);
   }
   .flag-img {

@@ -63,7 +63,7 @@ function renderCountries(countries) {
 (async function init() {
   lightIcon.style.display = "none";
   showSkeletons(12);
-  allCountries = await fetchCountries(fetchAllURL, "allCountries");
+  allCountries = await fetchCountries(fetchAllURL, "all_countries");
   renderCountries(allCountries);
 })();
 
@@ -85,12 +85,10 @@ async function fetchCountries(url, cacheKey) {
   const cachedData = getCache(cacheKey);
 
   if (cachedData) {
-    console.log("✅ USING LOCAL CACHE");
     return cachedData;
   }
 
   try {
-    console.log("🌐 FETCHING FROM NETWORK");
     const res = await fetch(url);
     const data = await res.json();
     setCache(cacheKey, data);
@@ -130,7 +128,8 @@ filterByRegion.addEventListener("change", async (e) => {
 
   closeIcon.style.display = "block";
   const regionData = await fetchCountries(
-    `https://restcountries.com/v3.1/region/${region.toLowerCase()}`
+    `https://restcountries.com/v3.1/region/${region.toLowerCase()}`,
+    `countries_region_${region.toLowerCase()}`
   );
   renderCountries(regionData);
 });
@@ -147,7 +146,11 @@ function createCard(country) {
   const info = document.createElement("div");
   info.className = "info";
 
-  info.innerHTML = `<h2>${country.name.common}</h2>
+  info.innerHTML = `<h2>${
+    country.name.common.length > 18
+      ? country.name.common.slice(0, 18) + "..."
+      : country.name.common
+  }</h2>
         <p>Population: <span>${Number(country.population).toLocaleString(
           "en-IN"
         )}</span></p>
@@ -184,7 +187,6 @@ function showSkeletons(count = 8) {
   }
 }
 
-// Implement dark mode with icons because script icons are slow
 // Getting Cache
 function getCache(key) {
   const cached = localStorage.getItem(key); // Fetch key from cache from localStorage
